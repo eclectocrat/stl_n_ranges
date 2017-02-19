@@ -44,8 +44,8 @@ namespace {
     std::unique_ptr<std::ifstream> file_ptr;
     
     namespace color {
-        unsigned char wave[] = {200, 200, 0};
-        unsigned char high[] = {200, 255, 0};
+        unsigned char wave[] = {100, 100, 0};
+        unsigned char high[] = {100, 155, 0};
         const unsigned char avg [] = {0, 200, 200};
         const unsigned char med [] = {0, 100, 200};
     }
@@ -168,7 +168,7 @@ int program_main(int argc, char** argv) {
     
 // draw image:
     auto image = cimg_library::CImg<unsigned char>(width, height, 1, 3, 0);
-    image.fill(0);
+    image.fill(0xff);
     
     const size_t v_center = height/2;
     const double v_amplitude = double(v_center)/127.0;
