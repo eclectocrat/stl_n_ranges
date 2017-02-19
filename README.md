@@ -36,6 +36,8 @@ pair<size_t, size_t> transform_n_ranges_linear (
 
 ## EXAMPLES
 
+To walk through a simple example program that uses `n_ranges_linear` to draw a waveform image with various analysis dimensions, see [EXAMPLE.md](example/EXAMPLE.md).
+
 #### Drawing a waveform
 
 A canonical (and motivating) example is compressing an arbitrary number of wave samples into a fixed frame width for visual display. The accompanying example program uses `n_ranges_linear` to draw a waveform like the one shown here:
