@@ -10,6 +10,8 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
+#include <thread>
+#include <future>
 
 #define cimg_display 0
 #define DOCTEST_CONFIG_COLORS_NONE
@@ -45,7 +47,7 @@ namespace {
     
     namespace color {
         unsigned char wave[] = {100, 100, 0};
-        unsigned char high[] = {100, 155, 0};
+        unsigned char high[] = {180, 155, 0};
         const unsigned char avg [] = {0, 200, 200};
         const unsigned char med [] = {0, 100, 200};
     }
@@ -124,9 +126,11 @@ int program_main(int argc, char** argv) {
     RIFF::file_data header;
     istream& ist = open_RIFF_file("example.wav", header);
     
-    vector<peak<unsigned char>> peaks;
+    typedef future<peak<unsigned char>> peak_future;
+    
+    vector<peak_future> peak_futures;
     vector<unsigned char> data;
-    peaks.reserve(width);
+    peak_futures.reserve(width);
     data.reserve(header.size);
     
     copy(istream_iterator<unsigned char>(ist), istream_iterator<unsigned char>(), back_inserter(data));
@@ -138,33 +142,40 @@ int program_main(int argc, char** argv) {
 // wave peak algorithm:
     cout << "Compressing " << header.size << " samples into " << width << " peaks at ~" << (header.size/width) << " samples per peak." << endl;
 
-    ec::transform_n_ranges_linear(data.begin(), data.end(), back_inserter(peaks), width,
-    [](auto begin, auto end) -> peak<unsigned char> {
-    
-    // min/max
-        const auto minmax = minmax_element(begin, end);
-    
-    // slope
-        double slope = 1.0;
-        if(minmax.first != minmax.second) {
-            const auto first = minmax.first < minmax.second ? minmax.first : minmax.second;
-            const auto second = minmax.first < minmax.second ? minmax.second : minmax.first;
-            slope = double(*second - *first)/double(distance(first, second));
-        }
+    ec::transform_n_ranges_linear(data.begin(), data.end(), back_inserter(peak_futures), width,
+    [](auto begin, auto end) -> peak_future {
+        return async(launch::async, [=]() -> peak<unsigned char> {
+        // min/max
+            const auto minmax = minmax_element(begin, end);
         
-    // mean average
-        const auto avg = accumulate(begin, end, 0)/distance(begin, end);
-    
-    // median
-        vector<unsigned char> mutable_copy;
-        mutable_copy.reserve(distance(begin, end));
-        copy(begin, end, back_inserter(mutable_copy));
-        const unsigned char med = static_cast<unsigned char>(median(mutable_copy.begin(), mutable_copy.end()));
-    
-    // done:
-        return peak<unsigned char>(*minmax.second, *minmax.first, avg, med, slope);
+        // slope
+            double slope = 1.0;
+            if(minmax.first != minmax.second) {
+                const auto first = minmax.first < minmax.second ? minmax.first : minmax.second;
+                const auto second = minmax.first < minmax.second ? minmax.second : minmax.first;
+                slope = double(*second - *first)/double(distance(first, second));
+            }
+            
+        // mean average
+            const auto avg = accumulate(begin, end, 0)/distance(begin, end);
+        
+        // median
+            vector<unsigned char> mutable_copy;
+            mutable_copy.reserve(distance(begin, end));
+            copy(begin, end, back_inserter(mutable_copy));
+            const unsigned char med = static_cast<unsigned char>(median(mutable_copy.begin(), mutable_copy.end()));
+        
+        // done:
+            return peak<unsigned char>(*minmax.second, *minmax.first, avg, med, slope);
+        });
     });
     
+    vector<peak<unsigned char>> peaks;
+    peaks.reserve(peak_futures.size());
+    
+    transform(peak_futures.begin(), peak_futures.end(), back_inserter(peaks), [](auto& f) -> peak<unsigned char> {
+        return f.get();
+    });
     
 // draw image:
     auto image = cimg_library::CImg<unsigned char>(width, height, 1, 3, 0);

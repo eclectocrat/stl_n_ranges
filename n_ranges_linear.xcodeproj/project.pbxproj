@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D6449DC91E5A42A8005AD3D4 /* EXAMPLE.md in Sources */ = {isa = PBXBuildFile; fileRef = D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */; };
+		D6449DCB1E5A4C91005AD3D4 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */; };
 		D68738601E59FD94001A816C /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D687385D1E59FD94001A816C /* example.cpp */; };
 		D68738611E59FDA9001A816C /* example.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = D687385A1E59FD94001A816C /* example.wav */; };
 /* End PBXBuildFile section */
@@ -27,10 +28,10 @@
 
 /* Begin PBXFileReference section */
 		D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = EXAMPLE.md; sourceTree = "<group>"; };
+		D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		D68738501E59FD78001A816C /* n_ranges_linear */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = n_ranges_linear; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687385A1E59FD94001A816C /* example.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = example.wav; sourceTree = "<group>"; };
 		D687385B1E59FD94001A816C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
-		D687385C1E59FD94001A816C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
 		D687385D1E59FD94001A816C /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
 		D687385F1E59FD94001A816C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D68738621E59FFDE001A816C /* n_ranges_linear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = n_ranges_linear.h; sourceTree = "<group>"; };
@@ -69,8 +70,8 @@
 			children = (
 				D687385A1E59FD94001A816C /* example.wav */,
 				D687385B1E59FD94001A816C /* lib */,
-				D687385C1E59FD94001A816C /* LICENSE.txt */,
 				D687385D1E59FD94001A816C /* example.cpp */,
+				D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */,
 				D687385F1E59FD94001A816C /* README.md */,
 				D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */,
 			);
@@ -136,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D68738601E59FD94001A816C /* example.cpp in Sources */,
+				D6449DCB1E5A4C91005AD3D4 /* LICENSE.md in Sources */,
 				D6449DC91E5A42A8005AD3D4 /* EXAMPLE.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
