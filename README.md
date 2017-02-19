@@ -1,5 +1,5 @@
 
-# n_ranges_linear v1.0
+# n_ranges_linear
 
 *Copyright(C) 2017 Jeremy Jurksztowicz* - *jurksztowicz@gmail.com*
 
