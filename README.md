@@ -13,7 +13,7 @@ To traverse a sequence in *almost equally* sized regions:
 
 ```c++
 template<typename RandomIter, typename IterRangeFunc>
-std::pair<size_t, size_t> for_n_ranges_linear (
+pair<size_t, size_t> for_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
     const size_t    ranges_size, // The desired number of output ranges
@@ -25,7 +25,7 @@ To transform a sequence in *almost equally* sized regions:
 
 ```c++
 template<typename RandomIter, typename OutputIter, typename IterRangeFunc>
-std::pair<size_t, size_t> transform_n_ranges_linear (
+pair<size_t, size_t> transform_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
     OutputIter      output_iter,
