@@ -3,6 +3,8 @@
 
 *Copyright© 2017 Jeremy Jurksztowicz - jurksztowicz@gmail.com*
 
+See [LICENSE.md](LICENSE.md)
+
 ## SUMMARY
 
 A simple STL style library allowing you to divide a discrete range into a number of subranges, each with an equal number of elements +/-1, where ranges with a greater number of elements are distributed linearly across the results.
@@ -55,6 +57,20 @@ transform_n_ranges_linear(samples.begin(), samples.end(), back_inserter(peaks), 
 The above snippet will create a compression of samples into wave peaks. Integer division remainders are distributed linearly along the entire output sequence, ensuring that the resulting view is as smooth as possible within the given output size.
 
 
+#### Distributing tasks to workers
+
+Distributing an unknown number of tasks among a fixed amount of workers as equally as possible:
+
+```c++
+for_n_ranges_linear(tasks.begin(), tasks.end(), workers.size(),
+[&workers](size_t range_index, auto begin, auto end) {
+    for_each(begin, end,
+    [&, range_index](auto const& task) {
+        workers[range_index].schedule(task);
+    });
+});
+```
+
 #### Splitting flat data
 
 There are many ways to split some flat bytes into regions representing objects; `transform_n_ranges_linear()` provides one more.
@@ -68,21 +84,6 @@ transform_n_ranges_linear(raw.begin(), raw.end(), back_inserter(points), raw.siz
     assert(distance(begin, end) == 3);
     const auto x=*begin, y=*(begin+1), z=*(begin+2);
     return point<int, 3>(x, y, z);
-});
-```
-
-
-#### Distributing tasks to workers
-
-Distributing an unknown number of tasks among a fixed amount of workers as equally as possible:
-
-```c++
-for_n_ranges_linear(tasks.begin(), tasks.end(), workers.size(),
-[&workers](size_t range_index, auto begin, auto end) {
-    for_each(begin, end,
-    [&, range_index](auto const& task) {
-        workers[range_index].schedule(task);
-    });
 });
 ```
 
