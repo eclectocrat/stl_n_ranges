@@ -12,7 +12,7 @@ License is **MIT**, suitable for open source or closed source, free or commercia
 
 ## EXAMPLES
 
-##### Drawing a waveform
+#### Drawing a waveform
 
 A canonical (and motivating) example is compressing an arbitrary number of wave samples into a fixed frame width for visual display:
 
@@ -28,11 +28,11 @@ transform_n_ranges_linear(samples.begin(), samples.end(), back_inserter(peaks), 
 The above snippet will create a compression of samples into wave peaks. Integer division remainders are distributed linearly along the entire output sequence, ensuring that the resulting view is as smooth as possible within the given output size.
 
 
-##### Splitting flat data
+#### Splitting flat data
 
-Split some flat bytes into regions representing objects. There are many ways to do this common task; `transform_n_ranges_linear()` provides one more.
+There are many ways to split some flat bytes into regions representing objects; `transform_n_ranges_linear()` provides one more.
 
-Given a `vector<int> raw`: where `raw.size()%3 == 0` we can generate a vector<point<int, 3>>:
+Given a `vector<int> raw`: where `raw.size()%3 == 0` we can generate a `vector<point<int, 3>>`:
 
 ```c++
 vector<point<int, 3>> points;
@@ -45,7 +45,7 @@ transform_n_ranges_linear(raw.begin(), raw.end(), back_inserter(points), raw.siz
 ```
 
 
-##### Distributing tasks to workers
+#### Distributing tasks to workers
 
 Distributing an unknown number of tasks among a fixed amount of workers as equally as possible:
 
