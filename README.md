@@ -5,7 +5,7 @@
 
 ## SUMMARY
 
-A simple STL style library allowing you to divide a discrete range into a number of subranges, each with an equal number of elements +/-1, where ranges with a greater number of elements are distributed linearly across the resulting ranges.
+A simple STL style library allowing you to divide a discrete range into a number of subranges, each with an equal number of elements +/-1, where ranges with a greater number of elements are distributed linearly across the results.
 
 To traverse a sequence in *almost equally* sized regions:
 
