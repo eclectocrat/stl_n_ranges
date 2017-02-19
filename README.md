@@ -36,7 +36,11 @@ std::pair<size_t, size_t> transform_n_ranges_linear (
 
 #### Drawing a waveform
 
-A canonical (and motivating) example is compressing an arbitrary number of wave samples into a fixed frame width for visual display:
+A canonical (and motivating) example is compressing an arbitrary number of wave samples into a fixed frame width for visual display. The accompanying example program uses `n_ranges_linear` to draw a waveform liek the one shown here:
+![Example output image]
+(https://github.com/eclectocrat/stl_n_ranges/blob/master/example/example_output.png)
+
+Here is a simplified call to get peaks and mean average:
 
 ```c++
 transform_n_ranges_linear(samples.begin(), samples.end(), back_inserter(peaks), window_width,
