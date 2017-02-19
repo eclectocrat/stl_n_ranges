@@ -3,7 +3,7 @@
 
 *Copyright© 2017 Jeremy Jurksztowicz - jurksztowicz@gmail.com*
 
-See [LICENSE.md](LICENSE.md)
+License is **MIT** style, suitable for open source or closed source, free or commercial usage. See [LICENSE.md](LICENSE.md) for details.
 
 ## SUMMARY
 
@@ -86,7 +86,3 @@ transform_n_ranges_linear(raw.begin(), raw.end(), back_inserter(points), raw.siz
     return point<int, 3>(x, y, z);
 });
 ```
-
-## LICENSE
-
-License is **MIT**, suitable for open source or closed source, free or commercial usage. See accompanying LICENSE.txt or contact jurksztowicz@gmail.com for complete license information.
