@@ -1,7 +1,7 @@
 
 # n_ranges_linear
 
-*Copyright(C) 2017 Jeremy Jurksztowicz* - *jurksztowicz@gmail.com*
+*Copyright© 2017 Jeremy Jurksztowicz - jurksztowicz@gmail.com*
 
 ## SUMMARY
 
