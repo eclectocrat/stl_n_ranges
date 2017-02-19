@@ -7,8 +7,30 @@
 
 A simple STL style library allowing you to divide a discrete range into a number of subranges, each with an equal number of elements +/-1, where ranges with a greater number of elements are distributed linearly across the resulting ranges.
 
-License is **MIT**, suitable for open source or closed source, free or commercial usage. See accompanying LICENSE.txt or contact jurksztowicz@gmail.com for complete license information.
+To traverse a sequence in equally sized discrete regions:
 
+```c++
+template<typename RandomIter, typename IterRangeFunc>
+std::pair<size_t, size_t> for_n_ranges_linear (
+    RandomIter      begin,
+    RandomIter      end,
+    const size_t    ranges_size,
+    IterRangeFunc   range_func
+)
+```
+
+To transform a sequence in equally sized discrete regions:
+
+```c++
+template<typename RandomIter, typename OutputIter, typename IterRangeFunc>
+std::pair<size_t, size_t> transform_n_ranges_linear (
+    RandomIter      begin,
+    RandomIter      end,
+    OutputIter      output_iter,
+    const size_t    ranges_size,
+    IterRangeFunc   range_func
+)
+```
 
 ## EXAMPLES
 
@@ -58,3 +80,7 @@ for_n_ranges_linear(tasks.begin(), tasks.end(), workers.size(),
     });
 });
 ```
+
+## LICENSE
+
+License is **MIT**, suitable for open source or closed source, free or commercial usage. See accompanying LICENSE.txt or contact jurksztowicz@gmail.com for complete license information.
