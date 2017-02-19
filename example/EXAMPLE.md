@@ -6,6 +6,8 @@ The included example.cpp program uses `n_ranges_linear` functions to generate a 
 2. Apply `transform_n_ranges_linear()` to the vector to output analysis data.
 3. Finally draw the analysis data into a bitmap file.
 
+[full source](example.cpp)
+
 ### Open RIFF stream, seek to wave data, copy data
 
 You can take a look at the extremely minimal RIFF file parser in [RIFF.h](RIFF.h) for more details.
@@ -26,7 +28,7 @@ You can take a look at the extremely minimal RIFF file parser in [RIFF.h](RIFF.h
     );
 ```   
    
-### Use `transform_n_ranges_linear`
+### Use `transform_n_ranges_linear()`
 
 Use the range iterators to get analysis data. In this case we don't want to mutate the sequence, so when calculating mean average we make a mutable copy to destructively analyze.
    
