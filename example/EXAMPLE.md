@@ -6,7 +6,7 @@ The included example.cpp program uses `n_ranges_linear` functions to generate a 
 2. Apply `transform_n_ranges_linear()` to the vector to output analysis data.
 3. Finally draw the analysis data into a bitmap file.
 
-[full source](example.cpp)
+Follow the steps below, or go to [full source here](example.cpp).
 
 ### Open RIFF stream, seek to wave data, copy data
 
