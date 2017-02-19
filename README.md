@@ -7,7 +7,7 @@
 
 A simple STL style library allowing you to divide a discrete range into a number of subranges, each with an equal number of elements +/-1, where ranges with a greater number of elements are distributed linearly across the resulting ranges.
 
-To traverse a sequence in equally sized discrete regions:
+To traverse a sequence in *almost equally* sized regions:
 
 ```c++
 template<typename RandomIter, typename IterRangeFunc>
@@ -19,7 +19,7 @@ std::pair<size_t, size_t> for_n_ranges_linear (
 )
 ```
 
-To transform a sequence in equally sized discrete regions:
+To transform a sequence in *almost equally* sized regions:
 
 ```c++
 template<typename RandomIter, typename OutputIter, typename IterRangeFunc>
