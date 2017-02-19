@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6449DC91E5A42A8005AD3D4 /* EXAMPLE.md in Sources */ = {isa = PBXBuildFile; fileRef = D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */; };
 		D68738601E59FD94001A816C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D687385D1E59FD94001A816C /* main.cpp */; };
 		D68738611E59FDA9001A816C /* example.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = D687385A1E59FD94001A816C /* example.wav */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = EXAMPLE.md; sourceTree = "<group>"; };
 		D68738501E59FD78001A816C /* n_ranges_linear */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = n_ranges_linear; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687385A1E59FD94001A816C /* example.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = example.wav; sourceTree = "<group>"; };
 		D687385B1E59FD94001A816C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				D687385C1E59FD94001A816C /* LICENSE.txt */,
 				D687385D1E59FD94001A816C /* main.cpp */,
 				D687385F1E59FD94001A816C /* README.md */,
+				D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D68738601E59FD94001A816C /* main.cpp in Sources */,
+				D6449DC91E5A42A8005AD3D4 /* EXAMPLE.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
