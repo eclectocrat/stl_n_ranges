@@ -14,8 +14,8 @@ template<typename RandomIter, typename IterRangeFunc>
 std::pair<size_t, size_t> for_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
-    const size_t    ranges_size,
-    IterRangeFunc   range_func
+    const size_t    ranges_size, // The desired number of output ranges
+    IterRangeFunc   range_func   // A function of the form (Iter, Iter) -> T
 )
 ```
 
@@ -27,8 +27,8 @@ std::pair<size_t, size_t> transform_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
     OutputIter      output_iter,
-    const size_t    ranges_size,
-    IterRangeFunc   range_func
+    const size_t    ranges_size, // The desired number of output transformations
+    IterRangeFunc   range_func   // A function of the form (size_t, Iter, Iter)
 )
 ```
 
