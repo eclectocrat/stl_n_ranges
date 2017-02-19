@@ -30,7 +30,7 @@
 		D687385B1E59FD94001A816C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
 		D687385C1E59FD94001A816C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
 		D687385D1E59FD94001A816C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D687385F1E59FD94001A816C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../README.txt; sourceTree = "<group>"; };
+		D687385F1E59FD94001A816C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D68738621E59FFDE001A816C /* n_ranges_linear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = n_ranges_linear.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +69,7 @@
 				D687385B1E59FD94001A816C /* lib */,
 				D687385C1E59FD94001A816C /* LICENSE.txt */,
 				D687385D1E59FD94001A816C /* main.cpp */,
-				D687385F1E59FD94001A816C /* README.txt */,
+				D687385F1E59FD94001A816C /* README.md */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -271,6 +271,7 @@
 				D68738591E59FD78001A816C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
