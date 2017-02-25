@@ -13,11 +13,12 @@ To traverse a sequence in *almost equally* sized regions:
 
 ```c++
 template<typename RandomIter, typename IterRangeFunc>
-pair<size_t, size_t> for_n_ranges_linear (
+void for_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
-    const size_t    ranges_size, // The desired number of output ranges
-    IterRangeFunc   range_func   // A function of the form (size_t, Iter, Iter)
+    const size_t    ranges_size,            // The desired number of output ranges
+    const size_t    distribution_offset,    // See discussion below
+    IterRangeFunc   range_func              // A function of the form (size_t, Iter, Iter)
 )
 ```
 
@@ -25,14 +26,25 @@ To transform a sequence in *almost equally* sized regions:
 
 ```c++
 template<typename RandomIter, typename OutputIter, typename IterRangeFunc>
-pair<size_t, size_t> transform_n_ranges_linear (
+void transform_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
     OutputIter      output_iter,
-    const size_t    ranges_size, // The desired number of output transformations
-    IterRangeFunc   range_func   // A function of the form (Iter, Iter) -> T
+    const size_t    ranges_size,            // The desired number of output transformations
+    const size_t    distribution_offset,    // See discussion below
+    IterRangeFunc   range_func              // A function of the form (Iter, Iter) -> T
 )
 ```
+
+## DESCRIPTION
+
+Given a sequence of some length, how can we divide up the elements into ranges so that each range has the same amount of elements +/-1, and the elements are distributed so that ranges with the same size do not "clump" together?
+
+For example, given a range with 27 elements:
+
+![Sequence, no ranges]
+(https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step1.png)
+
 
 ## EXAMPLES
 
