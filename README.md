@@ -89,7 +89,7 @@ The above snippet will create a compression of samples into wave peaks. Integer 
 
 #### Distributing tasks to workers
 
-Distributing an unknown number of tasks among a fixed amount of workers as equally as possible:
+Distributing an unknown number of tasks among a fixed amount of workers (perhaps each representing a hardware resource) as equally as possible:
 
 ```c++
 for_n_ranges_linear(tasks.begin(), tasks.end(), workers.size(),
