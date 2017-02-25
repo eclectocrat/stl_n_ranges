@@ -3,7 +3,7 @@
 
 *Copyright© 2017 Jeremy Jurksztowicz - jurksztowicz@gmail.com*
 
-License is **MIT** style, suitable for open source or closed source, free or commercial usage. See [LICENSE.md](LICENSE.md) for details.
+License is **MIT**-style, suitable for open source or closed source, free or commercial usage. See [LICENSE.md](LICENSE.md) for details.
 
 ## SUMMARY
 
@@ -57,7 +57,7 @@ The `n_ranges_linear` functions generate ranges so that integer remainders are d
 
 #### `distribution_offset` parameter
 
-You'll notice in the above example ranges with an extra element come before those without. You may want to offset the distribution of your remainder to manipulate where larger ranges end up in your output. For example, with a `distribution_offset` value of 1 (or any value `x` where `x % remainder_size == 1`), the above ranges look like this:
+In the above example, you may have noticed that ranges with an extra element come before those without. You may want to offset the distribution of your remainder to manipulate where larger ranges end up in your output. For example, with a `distribution_offset` value of 1 (or any value `x` where `x % remainder_size == 1`), the above ranges look like this:
 
 ![Sequence, ranges solved, distribution offset]
 (https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-distribution-offset.png)
