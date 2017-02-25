@@ -55,7 +55,7 @@ The `n_ranges_linear` functions generate ranges so that integer remainders are d
 ![Sequence, ranges solved]
 (https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step3.png)
 
-### `distribution_offset` parameter
+#### `distribution_offset` parameter
 
 You'll notice in the above example ranges with an extra element come before those without. You may want to offset the distribution of your remainder to manipulate where larger ranges end up in your output. For example, with a `distribution_offset` value of 1 (or any value `x` where `x % remainder_size == 1`), the above ranges look like this:
 
@@ -98,21 +98,5 @@ for_n_ranges_linear(tasks.begin(), tasks.end(), workers.size(),
     [&, range_index](auto const& task) {
         workers[range_index].schedule(task);
     });
-});
-```
-
-#### Splitting flat data
-
-There are many ways to split some flat bytes into regions representing objects; `transform_n_ranges_linear()` provides one more.
-
-Given a `vector<int> raw`: where `raw.size()%3 == 0` we can generate a `vector<point<int, 3>>`:
-
-```c++
-vector<point<int, 3>> points;
-transform_n_ranges_linear(raw.begin(), raw.end(), back_inserter(points), raw.size()/3,
-[](auto begin, auto end) -> point<int, 3> {
-    assert(distance(begin, end) == 3);
-    const auto x=*begin, y=*(begin+1), z=*(begin+2);
-    return point<int, 3>(x, y, z);
 });
 ```
