@@ -29,6 +29,7 @@
 /* Begin PBXFileReference section */
 		D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = EXAMPLE.md; sourceTree = "<group>"; };
 		D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
+		D65331501E5E3C3300E6BEB8 /* wave_peak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wave_peak.h; sourceTree = "<group>"; };
 		D68738501E59FD78001A816C /* n_ranges_linear */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = n_ranges_linear; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687385A1E59FD94001A816C /* example.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = example.wav; sourceTree = "<group>"; };
 		D687385B1E59FD94001A816C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 				D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */,
 				D687385F1E59FD94001A816C /* README.md */,
 				D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */,
+				D65331501E5E3C3300E6BEB8 /* wave_peak.h */,
 			);
 			path = example;
 			sourceTree = "<group>";

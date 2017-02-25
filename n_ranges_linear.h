@@ -88,15 +88,24 @@ std::pair<T, T> positive_ratio(T num, T den) {
             });
         });
  
+    When calculating a remainder, it is turned into the ratio of ranges that should get an additional element in order to use up all elements in the input range. In order to distribute this remainder each range 'i' is compared against the stated remainder ratio, so that if:
+        
+        i % ratio.denominator < ratio.numerator
+        
+    then the range 'i' will have one additional element added to it. Although the remainder is distrubted linearly, you can see that in a given range of ranges (where: 'location/inputs_per_output == 0') the front ranges will be given an extra element while the back ranges won't. Sometime this isn't the behaviour you want, you may want to perfectly merge a couple of 'for_n_ranges_linear()' results (see below), or you might just want the excess to be distributed in the middle or end of a range of ranges. You can use the 'distribution_offset' member to affect the distribution by changing the above algorithm to:
+    
+        (i + distribution_offset) % ratio.denominator < ratio.numerator
+        
+ 
+    *** TODO: Continue discussion ***
+ 
+ 
     @param begin The beginning of the input range.
     @param end The end of the input range.
     @param ranges_size The number of ranges to divide this sequence into.
+    @param distribution_offset When calculating the distribution this offset is applied. @see discussion above for more information.
     @param range_func The func that takes a size_t range_index, begin, and end iterators.
-    
-    @return A pair including:
-        - first: The whole number of elements per range.
-        - second: TODO (a ratio object describing distribution of remainder along with a progress step in that ratio).
-        
+ 
     PRECONDITIONS:
         begin <= end
         ranges_size > 0
@@ -104,13 +113,13 @@ std::pair<T, T> positive_ratio(T num, T den) {
     
     POSTCONDITIONS:
         every element has been ordered into a range and passed to range_func
-        return-value.first > 0
 */
 template<typename RandomIter, typename IterRangeFunc>
-std::pair<size_t, size_t> for_n_ranges_linear (
+void for_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
     const size_t    ranges_size,
+    const size_t    distribution_offset,
     IterRangeFunc   range_func
 ) {
     using namespace std;
@@ -131,53 +140,39 @@ std::pair<size_t, size_t> for_n_ranges_linear (
     const auto remainder_ratio = positive_ratio(remainder, ranges_size);
     for(size_t i = 0; i < ranges_size; ++i) {
         auto b = begin;
-        begin += inputs_per_output + ((i % remainder_ratio.second) < remainder_ratio.first ? 1 : 0);
+        begin += inputs_per_output + (((i + distribution_offset) % remainder_ratio.second) < remainder_ratio.first ? 1 : 0);
         range_func(i, b, begin);
     }
     
     assert_true(begin == end);
-
-    return std::make_pair(inputs_per_output, 0 /* TODO: steps before adding another remainder here */);
 }
 
 
 /** Transforms a sequence of elements in chunks of 'n' 'equalest-possible' ranges.
 
     For more about the algorithm @see: for_n_ranges_linear()
-    
-    For example, given a vector<int> raw: where raw.size()%3 == 0 we can generate a vector<point<int, 3>>:
-        
-        vector<point<int, 3>> points;
-        transform_n_ranges_linear(raw.begin(), raw.end(), back_inserter(points), raw.size()/3, 
-        [](auto begin, auto end) -> point<int, 3> {
-            assert(distance(begin, end) == 3);
-            const auto x=*begin, y=*(begin+1), z=*(begin+2);
-            return point<int, 3>(x, y, z);
-        });
  
     @param begin The beginning of the input range.
     @param end The end of the input range.
     @param output_iter The write iterator for the results.
     @param ranges_size The number of ranges to divide this sequence into.
+    @param distribution_offset When calculating the distribution this offset is applied. @see for_n_ranges_linear() for more information.
     @param range_func Transform func that takes (begin, end) and returns an arbitrary value insertable into output_iter.
-    
-    @return A pair including:
-        - first: The whole number of elements per range.
-        - second: TODO (a ratio object describing distribution of remainder along with a progress step in that ratio).
-        
+ 
     PRECONDITIONS:
     POSTCONDITIONS:
         @see: for_n_ranges_linear()
 */
 template<typename RandomIter, typename OutputIter, typename IterRangeFunc>
-std::pair<size_t, size_t> transform_n_ranges_linear (
+void transform_n_ranges_linear (
     RandomIter      begin,
     RandomIter      end,
     OutputIter      output_iter,
     const size_t    ranges_size,
+    const size_t    distribution_offset,
     IterRangeFunc   range_func
 ) {
-    return for_n_ranges_linear(begin, end, ranges_size, [&](size_t range_index, auto b, auto e) {
+    for_n_ranges_linear(begin, end, ranges_size, distribution_offset, [&](size_t range_index, auto b, auto e) {
         *output_iter++ = range_func(b, e);
     });
 }
@@ -204,30 +199,39 @@ TEST_CASE("[transform_n_ranges_linear] VALID transform_n_ranges_linear(...)") {
     vector<string> strout;
     vector<int> intout;
     
-    SUBCASE("[transform_n_ranges_linear] VALID output size and remainder") {
+    SUBCASE("[transform_n_ranges_linear] VALID output size") {
     
          SUBCASE("[transform_n_ranges_linear] transform_n_ranges_linear(): 100 ints into 50 strings") {
-             const auto result = transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout), 50,
+             transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout), 50, 0,
              [](auto begin, auto end) -> string {
                  ostringstream ost;
                  for_each(begin, end, [&](int n) { ost << n; });
                  return ost.str();
              });
-             CHECK(result.first == 2);
-             CHECK(result.second == 0);
              CHECK(strout.size() == 50);
          }
         
          SUBCASE("[transform_n_ranges_linear] transform_n_ranges_linear(): 100 ints into 21 strings") {
-             const auto result = transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout), 21,
+             transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout), 21, 0,
              [](auto begin, auto end) -> string {
                  ostringstream ost;
                  for_each(begin, end, [&](int n) { ost << n; });
                  return ost.str();
              });
-             CHECK(result.first == 4);
-             CHECK(result.second == 0);
              CHECK(strout.size() == 21);
+         }
+    }
+    
+    SUBCASE("[transform_n_ranges_linear] VALID output") {
+    
+         SUBCASE("[transform_n_ranges_linear] transform_n_ranges_linear(): 100 ints into 6 strings") {
+             transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout), 6, 0,
+             [](auto begin, auto end) -> string {
+                 ostringstream ost;
+                 for_each(begin, end, [&](int n) { ost << setfill('0') << setw(2) << n; });
+                 return ost.str();
+             });
+             CHECK(strout.size() == 6);
          }
     }
 }
@@ -243,11 +247,11 @@ TEST_CASE("[transform_n_ranges_linear] INVALID transform_n_ranges_linear(...)") 
         
         REQUIRE_THROWS(transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout),
             numeric_limits<size_t>::max(), /* <-- Too many regions requested. */
-            [](auto begin, auto end) -> string { return ""; }));
+            0, [](auto begin, auto end) -> string { return ""; }));
         
         REQUIRE_THROWS(transform_n_ranges_linear(intin.begin(), intin.end(), back_inserter(strout),
             0, /* <-- Not enough regions requested. */
-            [](auto begin, auto end) -> string { return ""; }));
+            0, [](auto begin, auto end) -> string { return ""; }));
     }
 }
 

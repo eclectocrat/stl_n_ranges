@@ -58,7 +58,7 @@ namespace {
     struct peak {
         peak(T n, T x, T a, T d, double m): min(n), max(x), avg(a), med(d), slope(m) {}
         
-            T min, max, avg, med;
+        T min, max, avg, med;
         double slope;
     };
     
@@ -142,7 +142,7 @@ int program_main(int argc, char** argv) {
 // wave peak algorithm:
     cout << "Compressing " << header.size << " samples into " << width << " peaks at ~" << (header.size/width) << " samples per peak." << endl;
 
-    ec::transform_n_ranges_linear(data.begin(), data.end(), back_inserter(peak_futures), width,
+    ec::transform_n_ranges_linear(data.begin(), data.end(), back_inserter(peak_futures), width, 0,
     [](auto begin, auto end) -> peak_future {
         return async(launch::async, [=]() -> peak<unsigned char> {
         // min/max
@@ -163,10 +163,10 @@ int program_main(int argc, char** argv) {
             vector<unsigned char> mutable_copy;
             mutable_copy.reserve(distance(begin, end));
             copy(begin, end, back_inserter(mutable_copy));
-            const unsigned char med = static_cast<unsigned char>(median(mutable_copy.begin(), mutable_copy.end()));
+            const auto med = median(mutable_copy.begin(), mutable_copy.end());
         
         // done:
-            return peak<unsigned char>(*minmax.second, *minmax.first, avg, med, slope);
+            return peak<unsigned char>(*minmax.second, *minmax.first, avg, static_cast<unsigned char>(med), slope);
         });
     });
     
