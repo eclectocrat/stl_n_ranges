@@ -50,7 +50,7 @@ If we want to split it into exactly 6 ranges, using integer division we will get
 ![Sequence, ranges and remainder]
 (https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step2.png)
 
-The `n_ranges_linear` functions generate ranges so that integer remainders are distributed linearly across the resulting ranges like so:
+The `n_ranges_linear` functions generate ranges so that integer remainders are distributed linearly across the resulting ranges without affecting sequence order, like so:
 
 ![Sequence, ranges solved]
 (https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step3.png)
