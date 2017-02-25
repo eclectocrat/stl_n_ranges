@@ -45,6 +45,16 @@ For example, given a range with 27 elements:
 ![Sequence, no ranges]
 (https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step1.png)
 
+If we want to split it into exactly 6 ranges, using integer division we will get 6 ranges of 4 elements each, and 3 remainder elements:
+
+![Sequence, ranges and remainder]
+(https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step2.png)
+
+The `n_ranges_linear` functions generate ranges so that integer remainders are distributed linearly across the resulting ranges like so:
+
+![Sequence, ranges solved]
+(https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step3.png)
+
 
 ## EXAMPLES
 
