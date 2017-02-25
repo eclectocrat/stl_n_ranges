@@ -55,6 +55,12 @@ The `n_ranges_linear` functions generate ranges so that integer remainders are d
 ![Sequence, ranges solved]
 (https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-step3.png)
 
+### `distribution_offset` parameter
+
+You'll notice in the above example ranges with an extra element come before those without. You may want to offset the distribution of your remainder to manipulate where larger ranges end up in your output. For example, with a `distribution_offset` value of 1 (or any value `x` where `x % remainder_size == 1`), the above ranges look like this:
+
+![Sequence, ranges solved, distribution offset]
+(https://github.com/eclectocrat/stl_n_ranges/blob/master/doc/algorithm-distribution-offset.png)
 
 ## EXAMPLES
 
