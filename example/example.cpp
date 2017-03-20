@@ -6,6 +6,11 @@
 //  Copyright © 2017 Jeremy Jurksztowicz. All rights reserved.
 //
 
+#define cimg_display 0
+#define DOCTEST_CONFIG_COLORS_NONE
+#define DOCTEST_CONFIG_IMPLEMENT
+#include "lib/CImg.h"
+#include "lib/RIFF.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -13,15 +18,7 @@
 #include <thread>
 #include <future>
 
-#define cimg_display 0
-#define DOCTEST_CONFIG_COLORS_NONE
-#define DOCTEST_CONFIG_IMPLEMENT
-
-#include "lib/CImg.h"
-#include "lib/doctest.h"
-#include "lib/RIFF.h"
-
-// algorithm
+#include "wave_peak.h"
 #include "n_ranges_linear.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -140,10 +140,11 @@ void for_n_ranges_linear (
     const auto remainder_ratio = positive_ratio(remainder, ranges_size);
     for(size_t i = 0; i < ranges_size; ++i) {
         auto b = begin;
-        begin += inputs_per_output + (((i + distribution_offset) % remainder_ratio.second) < remainder_ratio.first ? 1 : 0);
+        begin += inputs_per_output + (((i + distribution_offset) *
+            remainder_ratio.first % remainder_ratio.second) < remainder_ratio.first ? 1 : 0);
         range_func(i, b, begin);
     }
-    
+
     assert_true(begin == end);
 }
 

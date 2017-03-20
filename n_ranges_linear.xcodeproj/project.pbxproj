@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		D6449DC91E5A42A8005AD3D4 /* EXAMPLE.md in Sources */ = {isa = PBXBuildFile; fileRef = D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */; };
 		D6449DCB1E5A4C91005AD3D4 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */; };
-		D68738601E59FD94001A816C /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D687385D1E59FD94001A816C /* example.cpp */; };
 		D68738611E59FDA9001A816C /* example.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = D687385A1E59FD94001A816C /* example.wav */; };
+		D6C8AFCF1E6A07790094B3A3 /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D687385D1E59FD94001A816C /* example.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +30,7 @@
 		D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = EXAMPLE.md; sourceTree = "<group>"; };
 		D6449DCA1E5A4C91005AD3D4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		D65331501E5E3C3300E6BEB8 /* wave_peak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wave_peak.h; sourceTree = "<group>"; };
+		D66197DA1E62428600EF3C19 /* wave_peak_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wave_peak_example.cpp; sourceTree = "<group>"; };
 		D68738501E59FD78001A816C /* n_ranges_linear */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = n_ranges_linear; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687385A1E59FD94001A816C /* example.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = example.wav; sourceTree = "<group>"; };
 		D687385B1E59FD94001A816C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 				D687385F1E59FD94001A816C /* README.md */,
 				D6449DC81E5A42A8005AD3D4 /* EXAMPLE.md */,
 				D65331501E5E3C3300E6BEB8 /* wave_peak.h */,
+				D66197DA1E62428600EF3C19 /* wave_peak_example.cpp */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -138,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D68738601E59FD94001A816C /* example.cpp in Sources */,
+				D6C8AFCF1E6A07790094B3A3 /* example.cpp in Sources */,
 				D6449DCB1E5A4C91005AD3D4 /* LICENSE.md in Sources */,
 				D6449DC91E5A42A8005AD3D4 /* EXAMPLE.md in Sources */,
 			);
