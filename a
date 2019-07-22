@@ -1,6 +1,8 @@
 def no
 
+def afunc():
 
-def gg():  
+  def func2():
+
 def F:
 H!
