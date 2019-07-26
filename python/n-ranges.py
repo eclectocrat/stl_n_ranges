@@ -50,3 +50,21 @@ def range_at_index(num_elements, num_ranges, range_index, desc):
 	desc = desc or _desc(num_elements, num_ranges)
 	return (_range_to_element(_desc, range_index)
 			_range_to_element(_desc, range_index + 1))
+
+
+def n_ranges(num_elements, num_ranges, range_begin=0, range_end=-1, desc):
+	''' Generates ranges (tuples with two integer indexes) with the element and
+		range counts given.
+
+		for range in n_ranges(1000, 73):
+			print(range)
+	'''
+	if range_end < 0:
+		range_end = num_ranges
+	desc = desc or _desc(num_elements, num_ranges)
+	begin = range_index_to_element_index(num_elements, num_ranges, 
+										 range_begin, desc)
+	while begin < range_end:
+		end = _range_to_element(desc, begin + 1)
+		yield begin, end
+		begin, end = end, begin
