@@ -30,3 +30,23 @@ def _range_index_to_element_index(desc, range_index):
 		return range_index * desc.elements_per_range 						 \
 			+ (range_index * desc.ratio.numerator // desc.ratio.denominator) \
 			+ extra
+
+	
+# Public interface:
+
+def range_index_to_element_index(num_elements, num_ranges, range_index, desc):
+	''' Calculates the index of the first element of the selected range, with 
+		the element and range counts given.
+	'''
+	return _range_index_to_element_index(desc or 
+										_desc(num_elements, num_ranges), 
+										range_index)
+
+
+def range_at_index(num_elements, num_ranges, range_index, desc):
+	''' Calculates the index of the first and one past last elements of the 
+		selected range, with the element and range counts given.
+	'''
+	desc = desc or _desc(num_elements, num_ranges)
+	return (_range_to_element(_desc, range_index)
+			_range_to_element(_desc, range_index + 1))
