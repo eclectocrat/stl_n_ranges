@@ -5,7 +5,7 @@ from collections import namedtuple
 
 _Ratio = namedtuple('Ratio', 'numerator denominator')
 
-def _positive_ratio(n, d):
+def _ratio(n, d):
 	assert n > 0 or d > 0
 	gcd = math.gcd(n, d)
 	return _Ratio(n // gcd, d // gcd)
@@ -16,7 +16,7 @@ _Desc = namedtuple('Desc',
 
 def _desc(num_elements, num_ranges):
 	return _Desc(num_elements, num_ranges, num_elements // num_ranges, 
-				 _positive_ratio(num_elements % num_ranges, num_ranges))
+				 _ratio(num_elements % num_ranges, num_ranges))
 
 def _range_index_to_element_index(desc, range_index):
 	assert range_index < desc.num_ranges
@@ -34,7 +34,7 @@ def _range_index_to_element_index(desc, range_index):
 	
 # Public interface:
 
-def range_index_to_element_index(num_elements, num_ranges, range_index, desc):
+def first_element_in_range(num_elements, num_ranges, range_index, desc):
 	''' Calculates the index of the first element of the selected range, with 
 		the element and range counts given.
 	'''
