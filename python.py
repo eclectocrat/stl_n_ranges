@@ -4,7 +4,4 @@ def another_func_yo():
 # hello
 
 class A:
-  
-  
-  jdfshg
   pass
