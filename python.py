@@ -6,3 +6,6 @@ def another(param):
   param.a()
 
 # hello
+
+class A:
+  pass
