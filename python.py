@@ -1,14 +1,11 @@
 def another_func_yo():
   print("hi!")
  
-# hello
-s
-s
-s
+# hells
 clas:
   pass
 
-changesddss
-def d():
+def doo():
 	passddsssss
 s
+psps
