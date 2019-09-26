@@ -7,3 +7,6 @@ clas:
   passs
 ss
 ss
+
+hello
+another_func_yod'da
