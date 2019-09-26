@@ -3,7 +3,7 @@ def another_func_yo():
  
 # hello
 
-class A:
+clas:
   pass
 
 changes
