@@ -1,12 +1,10 @@
 def another_func_yo():
-def function(self):
-	pas  print("hi!")
- 
-# hells
-clas:
-  passs
-ss
-ss
+	pass
 
-hello
-another_func_yod'da
+def function(self):
+	print("hi!")
+ 
+def funcu():
+	another_func_yo()
+	b
+	c
