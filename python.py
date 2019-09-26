@@ -10,4 +10,4 @@ clas:
 
 changesddss
 def d():
-	passddsss
+	passddsssss
