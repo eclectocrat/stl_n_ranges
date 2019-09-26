@@ -1,10 +1,10 @@
+
 def another_func_yo():
-	pass
+    pass
 
 def function(self):
-	print("hi!")
+    print("hi!")
  
 def funcu():
-	another_func_yo()
-	b
-	c
+    another_func_yo()
+    legal = True
