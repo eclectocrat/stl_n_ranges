@@ -6,10 +6,12 @@ def function(self):
 # hells
 clas:
   pass
+ss
 
-def doo():
+
 
 s
-psps
+
+sss
 
 ds
