@@ -1,17 +1,9 @@
 def another_func_yo():
 def function(self):
-	pass
-  print("hi!")
+	pas  print("hi!")
  
 # hells
 clas:
-  pass
+  passs
 ss
-
-
-
-s
-
-sss
-
-ds
+ss
