@@ -10,4 +10,4 @@ clas:
 
 changesdd
 def d():
-	pass
+	passdd
