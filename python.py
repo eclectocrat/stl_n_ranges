@@ -8,6 +8,6 @@ def funcu():
     def inside_func():
         pass
 
-def newf():
-    hello = 1
-    return hello * 2
+def bbbb():
+    yay()
+    boo()
