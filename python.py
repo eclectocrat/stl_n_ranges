@@ -1,7 +1,3 @@
-
-def another_func_yo():
-    pass
- 
 def funcu():
     another_func_yo()
     legal = True
@@ -11,3 +7,9 @@ def funcu():
 def bbbb():
     yay()
     boo()
+
+def a_big_function(a=None, b=1, c="do_it", 
+                   e, f, g,
+                   x, y,
+                   z=mylib.A_DEFAULT):
+    pass
