@@ -9,7 +9,5 @@ def bbbb():
     boo()
 
 def a_big_function(a=None, b=1, c="do_it", 
-                   e, f, g,
-                   x, y,
                    z=mylib.A_DEFAULT):
     pass
