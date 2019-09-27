@@ -8,6 +8,6 @@ def bbbb():
     yay()
     boo()
 
-def a_big_function(a=None, b=1, c="do_it", 
+def a_big_function(a='Noyt', b=1, c="do_it", 
                    z=mylib.A_DEFAULT):
     pass
