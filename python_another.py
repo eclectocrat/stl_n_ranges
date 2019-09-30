@@ -1,6 +1,9 @@
-def yo():
+def Hello():
 	pass
 
-def Hello():
-#	not another
-	slslsls()
+def a_func(a, b, c, another=None,
+	   param=None):
+	print("HI")
+	
+def yo(fun, unf, nuf):
+	pass
